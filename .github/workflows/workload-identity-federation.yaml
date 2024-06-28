@@ -2,6 +2,10 @@ on:
   push:
 
 jobs:
+  deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+
   job_id:
     permissions:
       contents: 'read'
