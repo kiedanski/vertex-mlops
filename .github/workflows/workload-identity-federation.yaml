@@ -2,23 +2,31 @@ on:
   push:
 
 jobs:
-  deploy:
-        name: Deploy
-        runs-on: ubuntu-latest
-
-  job_id:
+  upload_to_gcs:
     permissions:
       contents: 'read'
       id-token: 'write'
 
-  steps:
-  - uses: 'actions/checkout@v4'
+    runs-on: ubuntu-latest
 
-  - id: 'auth'
-    uses: 'google-github-actions/auth@v2'
-    with:
-      project_id: 'vertex-llm-finetune' #TODO: change me
-      workload_identity_provider: "projects/7029402384/locations/global/workloadIdentityPools/github/providers/my-repo" 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Must come first!
+        
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: 'vertex-llm-finetune' #TODO: change me
+          workload_identity_provider: "projects/7029402384/locations/global/workloadIdentityPools/github/providers/my-repo"
 
-  - name: 'Set up Cloud SDK'
-    uses: 'google-github-actions/setup-gcloud@v2'
+      - name: Generate file
+        run: |
+          CURRENT_DATE=$(date +"%Y-%m-%d")
+          echo "$CURRENT_DATE" > file.txt 
+          
+      - name: Upload file to GCS
+        uses: google-github-actions/upload-cloud-storage@v2
+        with:
+          path: 'file.txt'
+          destination: 'gs://bucket-for-storing-embeddings/file.txt'
+
