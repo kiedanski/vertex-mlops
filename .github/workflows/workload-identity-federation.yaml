@@ -11,14 +11,14 @@ jobs:
       contents: 'read'
       id-token: 'write'
 
-    steps:
-    - uses: 'actions/checkout@v4'
+  steps:
+  - uses: 'actions/checkout@v4'
 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v2'
-      with:
-        project_id: 'vertex-llm-finetune' #TODO: change me
-        workload_identity_provider: "projects/7029402384/locations/global/workloadIdentityPools/github/providers/my-repo" 
+  - id: 'auth'
+    uses: 'google-github-actions/auth@v2'
+    with:
+      project_id: 'vertex-llm-finetune' #TODO: change me
+      workload_identity_provider: "projects/7029402384/locations/global/workloadIdentityPools/github/providers/my-repo" 
 
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v2'
+  - name: 'Set up Cloud SDK'
+    uses: 'google-github-actions/setup-gcloud@v2'
