@@ -3,7 +3,6 @@ on:
 
 jobs:
  job_id:
-    # Add "id-token" with the intended permissions.
    permissions:
      contents: 'read'
      id-token: 'write'
@@ -20,7 +19,7 @@ jobs:
         CURRENT_DATE=$(date +"%Y-%m-%d")
         echo "$CURRENT_DATE" > file.txt 
 
-    - id: 'upload-file'
+    - name: 'upload-file'
       uses: 'google-github-actions/upload-cloud-storage@v2'
       with:
         path: 'file.txt'
