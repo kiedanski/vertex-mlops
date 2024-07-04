@@ -4,7 +4,7 @@ on:
 jobs:
   upload_to_gcs:
     permissions:
-      contents: 'read'
+      contents: 'write'
       id-token: 'write'
 
     runs-on: ubuntu-latest
