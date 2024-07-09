@@ -22,7 +22,7 @@ jobs:
       - name: Generate file
         id: generate_file
         run: |
-          CURRENT_FILE="$(date +"%Y-%m-%d").txt"
+          CURRENT_FILE="$(date +"%Y-%m-%d:%H:%M").txt"
           echo "FILENAME=$CURRENT_FILE" >> $GITHUB_OUTPUT
           touch "$CURRENT_FILE"
           
