@@ -42,8 +42,9 @@ gcloud iam workload-identity-pools providers create-oidc "$PROVIDER_NAME" \
 export PROVIDER_FULL_PATH=$(gcloud iam workload-identity-pools providers describe "$PROVIDER_NAME" \
 	--project="$PROJECT_ID" \
 	--location="global" \
-	--workload-identity-pool="$WORKLOAD_ID" \
+	--workload-identity-pool="POOL_NAME" \
 	--format="value(name)")
+echo $PROVIDER_FULL_PATH
 ```
 
 
