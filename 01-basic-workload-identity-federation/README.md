@@ -81,5 +81,5 @@ gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
 We generate the github action replacing existing environmental variables
 
 ```sh
-envsubst '$PROVIDER_FULL_PATH,$PROJECT_ID,$BUCKET_NAME' < action.yaml > ../.github/workflows/01-basic-workload-federated-identity.yaml
+envsubst '$PROVIDER_FULL_PATH,$PROJECT_ID,$BUCKET_NAME' < action.yaml > ../.github/workflows/01-basic-workload-identity-federation.yaml
 ```
