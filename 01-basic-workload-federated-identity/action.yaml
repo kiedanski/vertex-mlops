@@ -17,7 +17,7 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: $PROJECT_ID
-          workload_identity_provider: $WORKLOAD_ID 
+          workload_identity_provider: $WORKLOAD_ID/provider/$PROVIDER_NAME
 
       - name: Generate file
         run: |
