@@ -50,10 +50,18 @@ echo $PROVIDER_FULL_PATH
 
 # Create Bucket and give it the appropiate permissions [Workflow Specific]
 
-```
+We create the bucket used to upload the files
+
+```sh
 gcloud storage buckets create "gs://${BUCKET_NAME}"
 ```
 
+Token requires uniform bucket level access, so we enable it.
+```sh
+gcloud storage buckets update gs://testing-bucket-09072024 --uniform-bucket-level-access
+```
+
+We give the pool permissions to write to the bucket 
 
 ```
 gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
@@ -65,6 +73,8 @@ gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
 
 # Generate the Github Action 
 
+We generate the github action replacing existing environmental variables
+
 ```sh
-envsubst < action.yaml > ../.github/workflows/01-basic-workload-federated-identity.yaml
+envsubst '$PROVIDER_FULL_PATH,$PROJECT_ID,$BUCKET_NAME' < action.yaml > ../.github/workflows/01-basic-workload-federated-identity.yaml
 ```

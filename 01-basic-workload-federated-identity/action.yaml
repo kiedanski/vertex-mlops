@@ -20,14 +20,16 @@ jobs:
           workload_identity_provider: $PROVIDER_FULL_PATH
 
       - name: Generate file
+        id: generate_file
         run: |
-          CURRENT_DATE=$(date +"%Y-%m-%d")
-          echo "$CURRENT_DATE" > file.txt 
+          CURRENT_FILE="$(date +"%Y-%m-%d").txt"
+          echo "FILENAME=$CURRENT_FILE" >> $GITHUB_OUTPUT
+          touch "$CURRENT_FILE"
           
       - name: Upload file to GCS
         uses: google-github-actions/upload-cloud-storage@v2
         with:
-          path: 'file.txt'
+          path: ${{ steps.generate_file.outputs.FILENAME }} 
           destination: $BUCKET_NAME
 
 
