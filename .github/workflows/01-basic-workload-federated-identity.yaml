@@ -16,17 +16,18 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          project_id: 'vertex-llm-finetune' #TODO: change me
-          workload_identity_provider: "projects/7029402384/locations/global/workloadIdentityPools/github/providers/my-repo"
+          project_id: vertex-llm-finetune
+          workload_identity_provider: projects/7029402384/locations/global/workloadIdentityPools/github-new 
 
       - name: Generate file
         run: |
           CURRENT_DATE=$(date +"%Y-%m-%d")
-          echo "$CURRENT_DATE" > file.txt 
+          echo "" > file.txt 
           
       - name: Upload file to GCS
         uses: google-github-actions/upload-cloud-storage@v2
         with:
           path: 'file.txt'
-          destination: 'bucket-for-storing-embeddings'
+          destination: wfi-testing
+
 
