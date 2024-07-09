@@ -1,5 +1,10 @@
 # Setup the necessary services and resources
 
+Copy the placeholder file for variables and fill it with your own values
+
+```sh
+cp variables.sh.template variables.sh
+```
 
 ```sh
 source variables.sh
@@ -58,7 +63,7 @@ gcloud storage buckets create "gs://${BUCKET_NAME}"
 
 Token requires uniform bucket level access, so we enable it.
 ```sh
-gcloud storage buckets update gs://testing-bucket-09072024 --uniform-bucket-level-access
+gcloud storage buckets update gs://$BUCKET_NAME --uniform-bucket-level-access
 ```
 
 We give the pool permissions to write to the bucket 
