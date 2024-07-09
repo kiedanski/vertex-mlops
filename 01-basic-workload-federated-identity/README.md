@@ -1,5 +1,6 @@
 # Setup the necessary services and resources
 
+
 ```sh
 source variables.sh
 ```
@@ -47,6 +48,7 @@ export PROVIDER_FULL_PATH=$(gcloud iam workload-identity-pools providers describ
 echo $PROVIDER_FULL_PATH
 ```
 
+# Create Bucket and give it the appropiate permissions [Workflow Specific]
 
 ```
 gcloud storage buckets create "gs://${BUCKET_NAME}"
@@ -58,4 +60,11 @@ gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
 	--project=$PROJECT_ID \
 	--role="roles/storage.objectCreator" \
 	--member="principalSet://iam.googleapis.com/$WORKLOAD_ID/attribute.repository/$GITHUB_ORG/$REPO_NAME"
+```
+
+
+# Generate the Github Action 
+
+```sh
+envsubst < action.yaml > ../.github/workflows/01-basic-workload-federated-identity.yaml
 ```
