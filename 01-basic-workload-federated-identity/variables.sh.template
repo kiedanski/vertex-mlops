@@ -1,7 +1,7 @@
-export GITHUB_ORG=
-export REPO_NAME=
-export BUCKET_NAME=
-export PROVIDER_NAME=
-export POOL_NAME=
-export PROJECT_ID=
-export SERVICE_ACCOUNT_NAME=
+export GITHUB_ORG= # take it from your real Github Org
+export REPO_NAME= # take it from your real repo name
+export BUCKET_NAME= # make it up, but needs to be unique in GCP, not trivial
+export PROVIDER_NAME= # make it up
+export POOL_NAME= # make it up
+export PROJECT_ID= # make it up
+export SERVICE_ACCOUNT_NAME= # make it up
