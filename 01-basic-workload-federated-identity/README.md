@@ -5,7 +5,7 @@ source variables.sh
 ```
 
 ```sh
-gcloud iam service-accounts create "my-service-account-2" \
+gcloud iam service-accounts create "$SERVICE_ACCOUNT_NAME" \
   --project "${PROJECT_ID}" || true
 ```
 
