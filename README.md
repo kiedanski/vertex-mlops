@@ -63,8 +63,7 @@ output:
 
 5.
 ```
-gcloud storage buckets add-iam-policy-binding gs://bucket-for-storing-embeddings \                                                                   --project="vertex-llm-finetune" \                          
+gcloud storage buckets add-iam-policy-binding gs://bucket-for-storing-embeddings \                                                                   --project="vertex-llm-finetune" \             
   --role="roles/storage.objectCreator" \                                                                                                                                     
-
-member="principalSet://iam.googleapis.com/projects/7029402384/locations/global/workloadIdentityPools/github/attribute.repository/kiedanski/vertex-mlops"
+  --member="principalSet://iam.googleapis.com/projects/7029402384/locations/global/workloadIdentityPools/github/attribute.repository/kiedanski/vertex-mlops"
 ```
